@@ -113,6 +113,7 @@ function mostrarGanadores() {
         participantesLi.splice(indiceAleatorio, 1)
 
     }
+localStorage.setItem("ganadores",JSON.stringify(ganadores));
 
 
     ganadores.forEach((ganador, indice) => {
