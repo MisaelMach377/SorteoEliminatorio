@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Taviraj:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Cuadro Eliminatoria</title>
+</head>
+
+<body>
+
+    <main>
+        <form class="contenedor-sorteo">
+            <h1>Torneo 🏆</h1>
+            <label for="participantes" class="participantes-label">Participantes</label>
+            <br>
+            <textarea name="participantes" id="participantes" class="participantes"></textarea>
+            <br>
+
+            <div class="opciones">
+                <p id="ayuda"><i class='bx bxs-help-circle'></i> Ayuda</p>
+                <p id="limpiar"><i class='bx bxs-trash'></i> Limpiar</p>
+            </div>
+            
+            <input type="submit" value="Comenzar" class="empezar">
+        </form>
+
+        <div class="box-ayuda" id="box-ayuda" style="display: none;">
+            <div class="header-ayuda">
+                <h1>¿Cómo realizar el torneo?</h1>
+            </div>
+            <div class="contenido-ayuda">
+                <h2>• Para este torneo es necesario tener de 2 a 16 participantes.</h2>
+                <br>
+                <h2>• Coloca el nombre del participante.</h2>
+                <br>
+                <h2>• Mezcla los participantes las veces que quieras.</h2>
+                <br>
+                <h2>• Los cruces estarán listos y podrás visualizarlos en el formato.</h2>
+                <br><br>
+                <h2>*Para mejor experiencia se recomienda que el número de participantes sea par</h2>
+                <i class='bx bxs-chevron-left-circle' onclick="location.reload();"></i>
+            </div>
+        </div>
+
+
+
+        <div class="participantes-container" style="display: none;">
+            <div class="header">
+                <h4>Participantes </h4>
+                <div>
+                    <i class='bx bxs-chevron-left-circle' onclick="location.reload();"></i>
+                    <i class='bx bx-refresh' id="chocolateo"></i>
+                </div>
+            </div>
+                <div class="total">
+                    <p>TOTAL <span id="numero-participantes">16</span></p>
+                </div>
+
+
+                <div class="scroll">
+                    <ul class="lista-participantes">
+                        <!-- Aquí irían los participantes listados -->
+                    </ul>
+                </div>
+
+                <button id="iniciar-sorteo">Comenzar</button>
+
+        </div>
+
+        <div class="container-contador" style="display: none;">
+            <div class="container-bg">
+                <div class="borde-interno"></div>
+                <p id="counter">3</p>
+            </div>
+            <svg width="360" height="360" viewBox="0 0 360 360" fill="none" xmlns="http://www.w3.org/2000/svg" class="countdown-v2__svg" style="color: rgb(138, 32, 145);">
+                <circle opacity="0.08" cx="179.998" cy="179.578" r="162.018" stroke="currentColor" stroke-width="35" stroke-linejoin="round" stroke-dasharray="8 30"></circle>
+            </svg>
+        </div>
+
+        <div class="ganadores-container" style="display: none;">
+            <h3>Cruces</h3>
+            <div class="ganadores">
+
+
+
+                <ul class="ganadores-li" id="resultado-ganadores">
+                    <!-- Aquí irían los cruces de ganadores -->
+                </ul>
+
+
+
+            </div>
+
+     <button id="btncuadro">Ver Formato</button> 
+        
+   <a href="index.html">Nuevo Sorteo</a>
+
+        
+        </div>
+
+        <div class="alerta"></div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+
+
+
+
+
+
+</html>

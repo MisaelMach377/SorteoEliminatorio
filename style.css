@@ -1,0 +1,523 @@
+*{
+    
+margin:0;
+padding: 0;
+box-sizing: border-box;
+font-family: "Montserrat", serif;
+}
+
+main{
+    height: 100vh;
+    width: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   background-image: url('img/Champions4.jpg');
+background-size: 100%;
+background-position: cover;
+}
+
+
+.contenedor-sorteo{
+
+    width: 450px;
+    max-width: 450px;
+    margin: 0 20px;
+    padding: 20px;
+    border: 2px solid rgb(0 0 0 /5%);
+    box-shadow: 2px 2px 1px rgb(0 0 0 /5%);
+border-radius: 10px;
+background-color: white;
+
+}
+
+h1{
+text-align: center;
+margin-bottom: 40px;
+font-size: 60px;
+color:black;
+
+}
+
+.participantes-label{
+
+    font-weight: 500;
+    font-size: 30px;
+    color:black;
+
+}
+
+
+.participantes{
+    width: 100%;
+    height: 200px;
+    resize: none;
+    margin-top:5px ;
+    padding: 10px;
+    border-radius: 5px;
+    border: solid thin black;
+    color: black;
+    font-weight: 500;
+}
+
+.participantes:focus{
+border-color: #007bff;
+outline: none;
+border-width: 2px;
+
+}
+
+.opciones{
+display: flex;
+justify-content: center;
+text-align: center;
+margin-top: 30px;
+gap: 30px;  /* Espacio entre los elementos */
+
+}
+
+.contenedor-sorteo{
+margin: 10px 15px;
+color:black;
+font-weight: 500;
+
+}
+
+.contenedor-sorteo:hover{
+    box-shadow: 3px 3px 3px 3px white;
+    
+    }
+
+
+
+.contenedor-sorteo .opciones p:hover{
+color: #9b2963
+}
+
+.contenedor-sorteo .empezar{
+
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    background-color: #007bff;
+    margin: 30px auto;
+    padding: 10px 30px;
+    border: 0;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+}
+
+
+.box-ayuda{
+    background-image: url('img/Champions2.jpg');
+    background-size: 100%;
+    background-position: cover;
+    height: 87vh;
+    width: 75vh;
+}
+
+.header-ayuda h1{
+justify-content: center;
+font-size: 30px;
+padding-top: 20px;
+color: white;
+}
+
+.contenido-ayuda{
+color: white;
+font-size: 13px;
+margin-left:20px;
+margin-right: 20px;
+justify-content: center;
+
+}
+
+.contenido-ayuda i{
+color: white;
+font-size: 60px;
+margin: 50px 10px 0 170px;
+}
+
+/*   -------------- CHOCOLATEAR PARTICIPANTES  ---------------- */
+
+.participantes-container{
+    margin: 10px;
+    width: 400px;
+    border-radius: 8px;
+    background-color: rgb(0, 38, 255);
+}
+
+.participantes-container .header{
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin: 10px;
+padding: 10px 0;
+border-bottom: 2px solid ;
+color: white
+
+
+}
+
+.participantes-container .header i {
+font-size: 1.6rem;
+}
+
+.participantes-container .total {
+margin: 10px;
+color: white;
+font-size: 17px;
+font-weight: 600;
+text-align: center;
+}
+
+
+.participantes-container .header span {
+color: white;
+}
+
+
+.participantes-container .scroll ul {
+    list-style: none;
+padding: 1rem;
+background-color: white;
+border: 0px solid black;
+border-bottom: none;
+width: 100%;
+
+overflow-y: auto; /* Activa el scroll vertical cuando el contenido excede el límite de altura */
+max-height: 300px; /* Ajusta la altura máxima del contenedor */
+
+}
+
+
+
+
+.participantes-container .lista-participantes li:last-child {
+border-bottom-left-radius:15px ;
+border-bottom-right-radius:15px ;
+}
+/*color del borde arriba*/
+
+.participantes-container button,
+.ganadores-container a{
+position: absolute;
+padding: 15px 24px;
+display: block;
+left: 50%;
+margin-top: 30px;
+transform: translateX(-50%);
+width: 250px;
+background-color: yellowgreen;
+border: none;
+color: white;
+font-weight: 600;
+font-size: 1rem;
+border-radius: 30px;
+cursor: pointer;
+
+}
+
+
+.participantes-container button{
+background-color: yellowgreen;
+}
+
+/*     CONTADOR                   */
+
+
+
+.container-bg {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    border: solid 10px #f2f6fa;
+}
+
+.container-bg .borde-interno {
+    border-radius: 50%;
+    width: 220px;
+    height: 220px;
+    border: solid 3px rgb(0, 38, 255);
+    border-left-color: white;
+    border-right-color: white;
+    border-bottom-color: white;
+    margin: auto;
+    animation: rotation 1s linear infinite;
+}
+
+.container-bg p {
+    position: absolute;
+    left: 50%;
+    font-size: 6rem;
+    transform: translateX(-50%);
+    font-weight: 600;
+    color: white;
+    user-select: none;
+}
+
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.container-contador svg {
+    animation: rotar 15s linear infinite;
+}
+
+@keyframes rotar {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(-360deg);
+    }
+}
+
+
+/*Mostrar Ganadores*/
+
+.ganadores-container {
+    margin: 10px;
+    width: 400px;
+}
+
+.ganadores-container h3 {
+    text-align: center;
+    padding: 15px;
+    color:white;
+    font-size: 3.0rem;
+}
+
+.ganadores {
+    background-color: #fff;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 8px;
+    box-shadow: 2px 2px 1px black;
+    border: 2px solid rgb(0 0 0 / 5%);
+}
+.ganadores ul{
+
+    list-style: none;
+    padding: 1rem;
+    background-color: white;
+    border: 0px solid green;
+    border-bottom: none;
+    width: 100%;
+    
+    overflow-y: auto; /* Activa el scroll vertical cuando el contenido excede el límite de altura */
+    max-height: 300px; /* Ajusta la altura máxima del contenedor */
+    
+}
+
+
+
+.ganadores .ganadores-li {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+}
+
+.ganadores-li li {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: solid thin blue;
+    padding: 10px;
+}
+
+.ganadores-li li:last-child {
+    border: none;
+}
+
+.ganadores-li p {
+    display: flex;
+    align-items: center;
+}
+
+.ganadores-li li:first-child,
+.ganadores-li li:nth-child(2),
+.ganadores-li li:nth-child(3),
+.ganadores-li li:nth-child(4)
+.ganadores-li li:nth-child(5)
+.ganadores-li li:nth-child(6)
+.ganadores-li li:nth-child(7)
+.ganadores-li li:nth-child(8)
+.ganadores-li li:nth-child(9)
+.ganadores-li li:nth-child(10)
+.ganadores-li li:nth-child(11)
+.ganadores-li li:nth-child(12)
+.ganadores-li li:nth-child(13)
+.ganadores-li li:nth-child(14)
+.ganadores-li li:nth-child(15)
+.ganadores-li li:nth-child(16)
+
+
+ {
+    font-weight: 500;
+}
+
+.ganadores-li span {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    color:  rgb(0, 38, 255);;
+    display: block;
+    margin-right: 10px;
+    padding: 5px 10px;
+    border-radius: 50%;
+}
+
+.ganadores-li li:first-child span {
+    background-color:  red;
+    color: #fff;
+    font-weight: 600;
+}
+
+.ganadores-li li:nth-child(2) span {
+    background-color: yellow;
+    color: #fff;
+    font-weight: 600;
+}
+
+.ganadores-li li:nth-child(3) span {
+    background-color:  green;
+    color: #fff;
+    font-weight: 600;
+}
+
+.ganadores-li li:nth-child(4) span {
+    background-color: orange;
+    color: #fff;
+    font-weight: 600;
+}
+
+.ganadores-li li:nth-child(5) span {
+    background-color: brown;
+    color: #fff;
+    font-weight: 600;
+}
+.ganadores-li li:nth-child(6) span {
+    background-color: skyblue;
+    color: #fff;
+    font-weight: 600;
+}
+.ganadores-li li:nth-child(7) span {
+    background-color:  gray;
+    color: #fff;
+    font-weight: 600;
+}
+.ganadores-li li:nth-child(8) span {
+    background-color:  purple;
+    color: #fff;
+    font-weight: 600;
+}
+.ganadores-li li:nth-child(9) span {
+    background-color:  gold;
+    color: #fff;
+    font-weight: 600;
+}
+.ganadores-li li:nth-child(10) span {
+    background-color: cadetblue;
+    color: #fff;
+    font-weight: 600;
+}
+.ganadores-li li:nth-child(11) span {
+    background-color: lime;
+    color: #fff;
+    font-weight: 600;
+}
+.ganadores-li li:nth-child(12) span {
+    background-color:  cornflowerblue;
+    color: #fff;
+    font-weight: 600;
+}
+.ganadores-li li:nth-child(13) span {
+    background-color:  coral;
+    color: #fff;
+    font-weight: 600;
+}
+.ganadores-li li:nth-child(14) span {
+    background-color:  darkolivegreen;
+    color: #fff;
+    font-weight: 600;
+}
+.ganadores-li li:nth-child(15) span {
+    background-color:  fuchsia;
+    color: #fff;
+    font-weight: 600;
+}
+.ganadores-li li:nth-child(16) span {
+    background-color: turquoise;
+    color: #fff;
+    font-weight: 600;
+}
+
+
+
+.ganadores-container a {
+    width: 300px;
+    padding: 15px 40px;
+    margin-top: 20px;
+    text-decoration: none;
+    text-align: center;
+}
+
+.ganadores-container button {
+    width: 300px;
+    padding: 15px 15px;
+    margin-top: 50px;
+    margin-left: 50px;
+    text-decoration: none;
+    background-color: yellowgreen;
+    border-radius: 30px;
+    border: none;
+color: white;
+font-size: 1rem;
+cursor: pointer;
+font-weight: 600;
+
+}
+
+
+
+/*Estilos alertas*/
+
+.alerta {
+    position: fixed;
+    background: #fbd0da;
+    padding: 15px;
+    border-radius: 50px;
+    font-weight: 500;
+    bottom: -10%;
+    opacity: 0;
+    transition: all .5s ease-in-out;
+    color: #9b2963;
+}
+
+.alerta.active {
+    transition: all .5s ease-in-out;
+    opacity: 1;
+    bottom: 50px;
+}
+
+
