@@ -1,6 +1,6 @@
 *{
     
-    margin:10px;
+    margin:5px;
     padding: 0;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 
@@ -21,48 +21,213 @@ body{
 
 
 .casilla-uno{
-    border: 4px solid white;
-        font-size: 10px;
+    border: 2px solid white;
+        font-size: 13px;
+        padding-bottom: 4px;
         text-align: center;
         width: 150px;
         height: 40px;
         color: white;
+        background-image: url('img/cruce5.jpg');
+        background-size: 100%;
     }
 
 
 
+
+
 .casilla-dos{
-    border: 4px solid white;
-    font-size: 10px;
+    font-size: 13px;
+    border: 2px solid white;
+        text-align: center;
+    width: 150px;
+    height: 40px;
+    margin-top: 0px;
+    color: white;
+    background-image: url('img/cruce5.jpg');
+    background-size: 100%;
+
+}
+
+.casilla-tres{
+    border: 2px solid white;
+    font-size: 13px;
+    padding-bottom: 4px;
+        text-align: center;
+    width: 150px;
+    height: 40px;
+    margin-top: 0px;
+    color: white;
+    background-image: url('img/cruce5.jpg');
+    background-size: 100%;
+}
+
+.casilla-cuatro{
+    border: 2px solid white;
+    font-size: 13px;
+    padding-bottom: 4px;
+        text-align: center;
+    width: 150px;
+    height: 40px;
+    margin-top: 0px;
+    color: white;
+    background-image: url('img/cruce5.jpg');
+    background-size: 100%;
+}
+
+.casilla-cinco{
+    border: 2px solid white;
+    font-size: 13px;
+    padding-bottom: 4px;
+        text-align: center;
+    width: 150px;
+    height: 40px;
+    margin-top: 0px;
+    color: white;
+    background-image: url('img/cruce5.jpg');
+    background-size: 100%;
+}
+
+.casilla-seis{
+    border: 2px solid white;
+    font-size: 13px;
+    padding-bottom: 4px;
+        text-align: center;
+    width: 150px;
+    height: 40px;
+    margin-top: 0px;
+    color: white;
+    background-image: url('img/cruce5.jpg');
+    background-size: 100%;
+}
+
+.casilla-siete{
+    border: 2px solid white;
+    font-size: 13px;
+    padding-bottom: 4px;
+        text-align: center;
+    width: 150px;
+    height: 40px;
+    margin-top: 0px;
+    color: white;
+    background-image: url('img/cruce5.jpg');
+    background-size: 100%;
+}
+
+.casilla-ocho{
+    border: 2px solid white;
+    font-size: 13px;
+    padding-bottom: 1px;
+        text-align: center;
+    width: 150px;
+    height: 40px;
+    margin-top: 0px;
+    color: white;
+    background-image: url('img/cruce5.jpg');
+    background-size: 100%;
+}
+
+.casilla-nueve{
+    border: 2px solid white;
+    font-size: 13px;
+    padding-bottom: 4px;
+        text-align: center;
+    width: 150px;
+    height: 40px;
+    color: white;
+    background-image: url('img/cruce5.jpg');
+    background-size: 100%;
+}
+
+.casilla-diez{
+    border: 2px solid white;
+    font-size: 13px;
+    padding-bottom: 4px;
+            text-align: center;
+        width: 150px;
+        height: 40px;
+        color: white;
+        background-image: url('img/cruce5.jpg');
+        background-size: 100%;
+}
+
+.casilla-once{
+    border: 2px solid white;
+    font-size: 13px;
+    padding-bottom: 4px;
+        text-align: center;
+    width: 150px;
+    height: 40px;
+    margin-top: 0px;
+    color: white;
+    background-image: url('img/cruce5.jpg');
+    background-size: 100%;
+}
+
+.casilla-doce{
+    border: 2px solid white;
+    font-size: 13px;
+    padding-bottom: 4px;
+        text-align: center;
+    width: 150px;
+    height: 40px;
+    margin-top: 0px;
+    color: white;
+    background-image: url('img/cruce5.jpg');
+    background-size: 100%;
+}
+
+.casilla-trece{
+    border: 2px solid white;
+    font-size: 13px;
+    padding-bottom: 4px;
+        text-align: center;
+    width: 150px;
+    height: 40px;
+    margin-top: 0px;
+    color: white;
+    background-image: url('img/cruce5.jpg');
+    background-size: 100%;
+}
+
+.casilla-catorce{
+    border: 2px solid white;
+    font-size: 13px;
+    padding-bottom: 4px;
+        text-align: center;
+    width: 150px;
+    height: 40px;
+    margin-top: 0px;
+    color: white;
+    background-image: url('img/cruce5.jpg');
+    background-size: 100%;
+}
+
+.casilla-quince{
+    border: 2px solid white;
+    font-size: 13px;
+    padding-bottom: 4px;
+        text-align: center;
+    width: 150px;
+    height: 40px;
+    margin-top: 0px;
+    color: white;
+    background-image: url('img/cruce5.jpg');
+    background-size: 100%;
+}
+
+.casilla-diesiseis{
+    border: 2px solid white;
+    font-size: 13px;
+    padding-bottom: 1px;
     text-align: center;
     width: 150px;
     height: 40px;
     margin-top: 0px;
     color: white;
-
+    background-image: url('img/cruce5.jpg');
+    background-size: 100%;
 }
-
-.casilla-nueve{
-    border: 4px solid white;
-    font-size: 10px;
-    text-align: center;
-    width: 150px;
-    height: 40px;
-    color: white;
-
-}
-
-.casilla-diez{
-    border: 4px solid white;
-        font-size: 10px;
-        text-align: center;
-        width: 150px;
-        height: 40px;
-        color: white;
-
-}
-
-
 
 /*++++++++++++++++++ CUARTOS DE FINAL +++++++++++++++++++++++++++++++++*/
 
@@ -74,16 +239,21 @@ justify-content: space-between;
 }
 
 
-.casilla-ganadorcuartos{
-    border: 4px solid white;
-    font-size: 10px;
+
+.casilla-ganadorcuartos textarea{
+    background-color: red;
+    color: white;
+    background-image: url('img/cruce5.jpg');
+    background-size: 100%;
     text-align: center;
+    border: 2px solid white;
     width: 150px;
     height: 40px;   
-    margin-top: 25px;
-    margin-left: 0;
-    color: white;
-
+    margin-top: 15px;
+    margin-left: -10px;
+    font-size: 30px;
+    padding-top: 10px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 
@@ -93,44 +263,38 @@ justify-content: space-between;
     display: flex;
     width: 100%;
     justify-content: space-between;
-padding-left: 160px;  
+padding-left: 210px;  
 margin-bottom: -50px;
 }
 
 
 
-.casilla-semifinal{
-    border: 4px solid white;
-    font-size: 10px;
-    text-align: center;
-    width: 150px;
-    height: 40px;   
-    color: white;
-
-    
-}
-
 .contenedor-semifinal2{
     display: flex;
     width: 100%;
     justify-content: space-between;
-margin-top: -40px;
-
-
+margin-top: -50px;
+padding-left: 50px;
 }
 
 
-
-.casilla-semifinal2{
-    border: 4px solid white;
-    font-size: 10px;
+.casilla-semifinal textarea,
+.casilla-semifinal2 textarea
+{
+    background-color: red;
+    color: white;
+    background-image: url('img/cruce5.jpg');
+    background-size: 100%;
     text-align: center;
+    border: 2px solid white;
     width: 150px;
     height: 40px;   
-    color: white;
-
+    margin-top: 1px;
+    margin-left: -10px;
+    font-size: 30px;
+    padding-top: 10px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-
 
 /*++++++++++++++++++ FINAL +++++++++++++++++++++++++++++++++*/
 
@@ -139,28 +303,39 @@ margin-top: -40px;
 margin-top: auto;   
  display: flex;
  flex-direction: column;
- gap: 15px;
+ gap: 10px;
  margin-top: 30px;
  margin-bottom: -150px;
- padding-left: 330px;
+ padding-left: 400px;
 padding-bottom: 70px;
 }
 
-.casilla-final{
-    border: 4px solid white;
-    font-size: 10px;
+
+
+.casilla-final textarea
+{
+    background-color: red;
+    color: white;
+    background-image: url('img/cruce5.jpg');
+    background-size: 100%;
     text-align: center;
+    border: 2px solid white;
     width: 150px;
     height: 40px;   
-    color: white;
-
-   
-    
+    margin-top: 1px;
+    margin-left: -10px;
+    font-size: 30px;
+    padding-top: 10px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 
-
-
+.regreso i{
+    font-size: 50px;
+    margin-left: 650px;
+    color: white;
+    top: 200px;
+    }
 
 
 

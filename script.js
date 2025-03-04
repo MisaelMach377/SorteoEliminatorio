@@ -113,6 +113,7 @@ function mostrarGanadores() {
         participantesLi.splice(indiceAleatorio, 1)
 
     }
+localStorage.setItem("ganadores",JSON.stringify(ganadores));
 
 
     ganadores.forEach((ganador, indice) => {
@@ -182,17 +183,28 @@ window.onload = function GuardarDatos() {
  let divs = [
     document.querySelector('.casilla-uno'),
     document.querySelector('.casilla-dos'),
+    document.querySelector('.casilla-tres'),
+    document.querySelector('.casilla-cuatro'),
+    document.querySelector('.casilla-cinco'),
+    document.querySelector('.casilla-seis'),
+    document.querySelector('.casilla-siete'),
+    document.querySelector('.casilla-ocho'),
     document.querySelector('.casilla-nueve'),
     document.querySelector('.casilla-diez'),
-    document.querySelector('.casilla-semifinal'),
-    document.querySelector('.casilla-final')
+    document.querySelector('.casilla-once'),
+    document.querySelector('.casilla-doce'),
+    document.querySelector('.casilla-trece'),
+    document.querySelector('.casilla-catorce'),
+    document.querySelector('.casilla-quince'),
+    document.querySelector('.casilla-diesiseis')
+
     // Agrega más divs si los necesitas
 ];
 
 // Insertamos los ganadores uno por uno en los divs
 ganadores.forEach((ganador, index) => {
     if (divs[index]) {
-        let p = document.createElement('h1');
+        let p = document.createElement('p');
         p.textContent = ganador;  // Asignamos el nombre del ganador al elemento <p>
         divs[index].appendChild(p);  // Agregamos el <h1> dentro del div correspondiente
     }
@@ -201,7 +213,6 @@ ganadores.forEach((ganador, index) => {
 console.log("No hay ganadores para mostrar.");
 }
 }
-
 
 
 
