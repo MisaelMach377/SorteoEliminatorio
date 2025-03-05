@@ -40,11 +40,3 @@ window.onload = function() {
     }
 
 
-
-
-    
-<<<<<<< HEAD
-}
-=======
-}
->>>>>>> 36c63093f26ca3978e46fe82dc79421447b4ac97
