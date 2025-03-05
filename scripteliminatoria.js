@@ -37,6 +37,6 @@ window.onload = function() {
         });
     } else {
         console.log("No hay ganadores para mostrar.");
-    }
+    }}
 
 
