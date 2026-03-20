@@ -1,0 +1,718 @@
+*{
+    
+margin:0;
+padding: 0;
+box-sizing: border-box;
+font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif, serif;
+}
+
+main{
+    height: 100vh;
+    width: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   background-image: url('img/Champions4.jpg');
+background-size: 100%;
+background-position: cover;
+}
+
+
+.contenedor-sorteo{
+
+    width: 450px;
+    max-width: 450px;
+    margin: 0 20px;
+    padding: 20px;
+    border: 2px solid rgb(0 0 0 /5%);
+    box-shadow: 2px 2px 1px rgb(0 0 0 /5%);
+border-radius: 10px;
+background-color: white;
+
+}
+
+h1{
+text-align: center;
+margin-bottom: 40px;
+font-size: 60px;
+color:black;
+
+}
+
+.participantes-label{
+
+    font-weight: 500;
+    font-size: 30px;
+    color:black;
+
+}
+
+.textarea-pro {
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.textarea-pro label {
+    font-weight: 600;
+    font-size: 1rem;
+    color: #333;
+}
+
+.textarea-pro textarea {
+    width: 100%;
+    min-height: 160px;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    color: #333;
+    resize: none;
+    transition: border 0.3s, box-shadow 0.3s;
+}
+
+.textarea-pro textarea:focus {
+    outline: none;
+    border-color: #333;
+    box-shadow: 0 0 8px rgba(106, 27, 154, 0.2);
+}
+
+.opciones{
+display: flex;
+justify-content: center;
+text-align: center;
+margin-top: 30px;
+gap: 30px;  /* Espacio entre los elementos */
+
+}
+
+.contenedor-sorteo{
+margin: 10px 15px;
+color:black;
+font-weight: 500;
+
+}
+
+
+.contenedor-sorteo .opciones p:hover{
+color: #9b2963
+}
+
+.contenedor-sorteo .empezar {
+    display: block;
+    width: 100%;           /* que ocupe todo el ancho del contenedor */
+    font-size: 1.1rem;     /* un poquito más grande que 16px */
+    font-weight: 600;
+    background: linear-gradient(135deg, #401ac7, #8e93c0); /* degradado morado pro */
+    margin: 30px 0;        /* espacio arriba y abajo */
+    padding: 14px 0;       /* más alto para click más cómodo */
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.contenedor-sorteo .empezar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.contenedor-sorteo .empezar:active {
+    transform: translateY(1px);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+}
+
+
+.box-ayuda{
+    background-image: url('img/Champions2.jpg');
+    background-size: 100%;
+    background-position: cover;
+    height: 87vh;
+    width: 75vh;
+}
+
+.header-ayuda h1{
+justify-content: center;
+font-size: 30px;
+padding-top: 20px;
+color: white;
+}
+
+.contenido-ayuda{
+color: white;
+font-size: 13px;
+margin-left:20px;
+margin-right: 20px;
+justify-content: center;
+
+}
+
+.contenido-ayuda i{
+color: white;
+font-size: 60px;
+margin: 50px 10px 0 170px;
+}
+
+
+
+
+/*   -------------- CHOCOLATEAR PARTICIPANTES  ---------------- */
+
+.participantes-container{
+    margin: 10px;
+    width: 400px;
+    border-radius: 8px;
+    background-color: rgb(0, 38, 255);
+}
+
+.participantes-container .header{
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin: 10px;
+padding: 10px 0;
+border-bottom: 2px solid ;
+color: white
+
+
+}
+
+.participantes-container .header i {
+font-size: 1.6rem;
+}
+
+.participantes-container .total {
+margin: 10px;
+color: white;
+font-size: 17px;
+font-weight: 600;
+text-align: center;
+}
+
+
+.participantes-container .header span {
+color: white;
+}
+
+
+.participantes-container .scroll ul {
+    list-style: none;
+padding: 1rem;
+background-color: white;
+border: 0px solid black;
+border-bottom: none;
+width: 100%;
+
+overflow-y: auto; /* Activa el scroll vertical cuando el contenido excede el límite de altura */
+max-height: 300px; /* Ajusta la altura máxima del contenedor */
+
+}
+
+
+
+
+.participantes-container .lista-participantes li:last-child {
+border-bottom-left-radius:15px ;
+border-bottom-right-radius:15px ;
+}
+/*color del borde arriba*/
+
+.acciones-ganadores {
+    display: flex;
+    flex-direction: column; /* Botones uno abajo del otro */
+    gap: 30px;              /* Espacio constante entre botones */
+    margin-top: 25px;
+    align-items: center;    /* Centra los botones horizontalmente */
+    width: 100%;
+}
+
+
+
+.participantes-container button{
+background-color: yellowgreen;
+}
+
+/*     CONTADOR                   */
+
+
+
+.container-bg {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    border: solid 10px #f2f6fa;
+}
+
+.container-bg .borde-interno {
+    border-radius: 50%;
+    width: 220px;
+    height: 220px;
+    border: solid 3px rgb(0, 38, 255);
+    border-left-color: white;
+    border-right-color: white;
+    border-bottom-color: white;
+    margin: auto;
+    animation: rotation 1s linear infinite;
+}
+
+.container-bg p {
+    position: absolute;
+    left: 50%;
+    font-size: 6rem;
+    transform: translateX(-50%);
+    font-weight: 600;
+    color: white;
+    user-select: none;
+}
+
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.container-contador svg {
+    animation: rotar 15s linear infinite;
+}
+
+@keyframes rotar {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(-360deg);
+    }
+}
+
+
+
+
+/* Estilos alertas pro */
+.alerta {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -100px; /* inicia oculta abajo */
+    background: linear-gradient(135deg, #d60a0a, #d60a0a); /* degradado pro */
+    padding: 15px 25px;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #fff;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    opacity: 0;
+    pointer-events: none; /* para que no bloquee clicks */
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 9999;
+}
+
+.alerta.active {
+    bottom: 50px;
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* Animación opcional para entrada tipo “pop” */
+.alerta.active {
+    animation: popIn 0.5s forwards;
+}
+
+@keyframes popIn {
+    0% { transform: translateX(-50%) translateY(20px) scale(0.95); opacity: 0; }
+    60% { transform: translateX(-50%) translateY(-10px) scale(1.02); opacity: 1; }
+    100% { transform: translateX(-50%) translateY(0) scale(1); opacity: 1; }
+}
+
+/* CONTENEDOR MÁS PRO */
+.ganadores-container {
+    margin: 5px auto;
+    width: 420px;
+    padding: 20px;
+    border-radius: 15px;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    animation: fadeIn 0.6s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px);}
+    to { opacity: 1; transform: translateY(0);}
+}
+
+/* TÍTULO */
+.ganadores-container h3 {
+    text-align: center;
+    font-size: 2.2rem;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+/* LISTA */
+.ganadores {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.ganadores-li li {
+    background: #fff;
+    margin: 5px 0;
+    border-radius: 8px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.ganadores-li li:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* BOTONES CONTENEDOR */
+.acciones-ganadores {
+    display: flex;
+        gap: 20px; /* 🔥 aumenta esto */
+    flex-direction: column;
+    align-items: center;
+}
+
+/* BOTÓN PRINCIPAL PRO */
+.btn-pro {
+    width: 260px;
+    padding: 14px;
+    border-radius: 30px;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    color: white;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+}
+
+.btn-pro:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+}
+
+/* BOTÓN SECUNDARIO */
+.btn-secundario {
+    width: 260px;
+    padding: 14px;
+    border-radius: 30px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 5px;
+    color: white;
+    background: linear-gradient(135deg, #00c853, #64dd17);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+}
+
+.btn-secundario:hover {
+    transform: translateY(-3px);
+}
+
+
+/* CONTENEDOR PRINCIPAL - Efecto Cristal */
+.participantes-container {
+    background: rgba(255, 255, 255, 0.05); /* Fondo traslúcido */
+    backdrop-filter: blur(15px);           /* Desenfoque de fondo */
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 25px;
+    width: 400px;
+    margin: 20px auto;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    color: white;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* HEADER - Elegante y alineado */
+.participantes-container .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 15px;
+}
+
+.participantes-container .header h4 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.participantes-container .header i {
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-left: 15px;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.participantes-container .header i:hover {
+    color: #00c853; /* Verde éxito al pasar el mouse */
+    transform: rotate(90deg);
+}
+
+/* CONTADOR TOTAL */
+.participantes-container .total {
+    text-align: center;
+    margin: 15px 0;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.participantes-container .total span {
+    color: #fff;
+    font-weight: 800;
+    font-size: 1.1rem;
+    background: #1e3c72;
+    padding: 2px 10px;
+    border-radius: 10px;
+    margin-left: 5px;
+}
+
+/* LISTA CON SCROLL PERSONALIZADO */
+.participantes-container .scroll {
+    max-height: 280px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+    padding-right: 5px;
+}
+
+/* Personalización del scrollbar (Chrome/Edge) */
+.participantes-container .scroll::-webkit-scrollbar {
+    width: 6px;
+}
+.participantes-container .scroll::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+}
+
+.lista-participantes {
+    list-style: none;
+    padding: 0;
+}
+
+.lista-participantes li {
+    background: rgba(255, 255, 255, 0.1);
+    color: black;
+    margin-bottom: 8px;
+    padding: 12px 15px;
+    border-radius: 12px;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.lista-participantes li:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* BOTÓN "COMENZAR" - El protagonista */
+#iniciar-sorteo {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 15px;
+    background: linear-gradient(135deg, #00c853, #64dd17); /* Verde vibrante */
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(0, 200, 83, 0.3);
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+}
+
+#iniciar-sorteo:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(0, 200, 83, 0.5);
+    filter: brightness(1.1);
+}
+
+#iniciar-sorteo:active {
+    transform: translateY(1px);
+}
+
+/* Animación de entrada */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* Estilo del contenedor del nombre y número */
+.lista-participantes li p {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    color: #333; /* Texto oscuro para que resalte en el fondo claro de la lista */
+    font-weight: 600;
+}
+
+/* Estilo base del círculo numerado */
+.lista-participantes li span {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-right: 15px;
+    color: white;
+    font-size: 0.85rem;
+    font-weight: 700;
+    flex-shrink: 0; /* Para que no se aplaste si el nombre es largo */
+}
+
+/* Colores por posición (puedes agregar más) */
+.lista-participantes li:nth-child(1) span { background-color: #ff4d4d; } /* Rojo */
+.lista-participantes li:nth-child(2) span { background-color: #ffcc00; } /* Amarillo */
+.lista-participantes li:nth-child(3) span { background-color: #2ecc71; } /* Verde */
+.lista-participantes li:nth-child(4) span { background-color: #3498db; } /* Azul */
+.lista-participantes li:nth-child(5) span { background-color: #9b59b6; } /* Morado */
+.lista-participantes li:nth-child(6) span { background-color: #e67e22; } /* Naranja */
+.lista-participantes li:nth-child(7) span { background-color: #1abc9c; } /* Turquesa */
+.lista-participantes li:nth-child(8) span { background-color: #34495e; } /* Gris oscuro */
+
+/* Si hay más de 8, los siguientes tendrán un color neutro elegante */
+.lista-participantes li:nth-child(n+9) span {
+    background-color: #1e3c72;
+}
+
+
+/* --- ESTILO UNIFICADO PARA LISTAS (PRO) --- */
+.lista-participantes, .ganadores-li {
+    list-style: none;
+    padding: 0;
+}
+
+.lista-participantes li, .ganadores-li li {
+    background: rgba(255, 255, 255, 0.95); /* Blanco casi sólido para legibilidad */
+    margin-bottom: 8px;
+    padding: 10px 15px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease;
+}
+
+.lista-participantes li:hover, .ganadores-li li:hover {
+    transform: scale(1.02);
+}
+
+/* El texto y el círculo */
+.lista-participantes li p, .ganadores-li li p {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    color: #1a1a1a; /* Texto oscuro profesional */
+    font-weight: 600;
+    margin: 0;
+}
+
+.lista-participantes li span, .ganadores-li li span {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-right: 15px;
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+/* --- COLORES DE LOS CÍRCULOS (Hasta 16 participantes) --- */
+/* Se aplica a la lista de participantes Y a la de ganadores automáticamente */
+
+/* --- COLORES DE LOS CÍRCULOS (1 AL 16) --- */
+/* Borra cualquier regla anterior que diga nth-child(n+9) */
+
+.lista-participantes li:nth-child(1) span, .ganadores-li li:nth-child(1) span { background-color: #ff4d4d; }
+.lista-participantes li:nth-child(2) span, .ganadores-li li:nth-child(2) span { background-color: #ffcc00; }
+.lista-participantes li:nth-child(3) span, .ganadores-li li:nth-child(3) span { background-color: #2ecc71; }
+.lista-participantes li:nth-child(4) span, .ganadores-li li:nth-child(4) span { background-color: #3498db; }
+.lista-participantes li:nth-child(5) span, .ganadores-li li:nth-child(5) span { background-color: #9b59b6; }
+.lista-participantes li:nth-child(6) span, .ganadores-li li:nth-child(6) span { background-color: #e67e22; }
+.lista-participantes li:nth-child(7) span, .ganadores-li li:nth-child(7) span { background-color: #1abc9c; }
+.lista-participantes li:nth-child(8) span, .ganadores-li li:nth-child(8) span { background-color: #34495e; }
+    
+/* Nuevos colores del 9 al 16 */
+.lista-participantes li:nth-child(9) span, .ganadores-li li:nth-child(9) span { background-color: #ef4444; }
+.lista-participantes li:nth-child(10) span, .ganadores-li li:nth-child(10) span { background-color: #10b981; }
+.lista-participantes li:nth-child(11) span, .ganadores-li li:nth-child(11) span { background-color: #6366f1; }
+.lista-participantes li:nth-child(12) span, .ganadores-li li:nth-child(12) span { background-color: #f59e0b; }
+.lista-participantes li:nth-child(13) span, .ganadores-li li:nth-child(13) span { background-color: #ec4899; }
+.lista-participantes li:nth-child(14) span, .ganadores-li li:nth-child(14) span { background-color: #8b5cf6; }
+.lista-participantes li:nth-child(15) span, .ganadores-li li:nth-child(15) span { background-color: #06b6d4; }
+.lista-participantes li:nth-child(16) span, .ganadores-li li:nth-child(16) span { background-color: #1e3c72; }
+
+/* Color de respaldo para más de 16 */
+.lista-participantes li:nth-child(n+17) span, .ganadores-li li:nth-child(n+17) span {
+    background-color: #0f172a;
+}
+
+/* --- CONTROL DE SCROLL PARA GANADORES --- */
+.scroll-ganadores {
+    max-height: 320px; /* Ajusta este alto según prefieras */
+    overflow-y: auto;
+    padding-right: 8px; /* Espacio para que el scroll no tape el texto */
+    margin: 10px 0;
+}
+
+/* Estilo del Scrollbar pro para que no se vea el gris feo de Windows */
+.scroll-ganadores::-webkit-scrollbar {
+    width: 6px;
+}
+
+.scroll-ganadores::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+}
+
+.scroll-ganadores::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* Aseguramos que el contenedor principal no crezca infinitamente */
+.ganadores-container {
+    max-height: 90vh; /* No permite que la caja sea más alta que la pantalla */
+    display: flex;
+    flex-direction: column;
+}
+
+#chocolateo {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#chocolateo:hover {
+    color: #00c853; /* Verde vibrante como tus otros botones */
+    transform: scale(1.2) rotate(90deg);
+}

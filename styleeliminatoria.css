@@ -1,0 +1,117 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: #0d1117;
+    height: 100vh;
+    overflow: hidden;
+    color: white;
+}
+
+.torneo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    gap: 20px;
+    padding: 0 10px;
+}
+
+/* Bloques laterales */
+.bloque-fase {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    height: 90vh;
+}
+
+.columna {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+}
+
+/* Estilo base para todas las casillas */
+[class^="casilla-"] {
+    width: 120px;
+    height: 35px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+[class^="casilla-"] h1 {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+/* Estilo específico para el Centro */
+.columna-centro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    flex: 0.5;
+}
+
+.casilla-finalista {
+    border: 1px solid #3b82f6;
+    background: rgba(59, 130, 246, 0.1);
+}
+
+.bloque-campeon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.bloque-campeon i {
+    font-size: 60px;
+    color: gold;
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+}
+
+.casilla-campeon {
+    width: 160px;
+    height: 50px;
+    border: 2px solid gold;
+    background: rgba(255, 215, 0, 0.1);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+}
+
+.casilla-campeon h1 {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: gold;
+}
+
+/* Botón regreso */
+.regreso {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+}
+
+.regreso i {
+    font-size: 30px;
+    color: white;
+    opacity: 0.5;
+    transition: 0.3s;
+}
+
+.regreso i:hover {
+    opacity: 1;
+}
