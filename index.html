@@ -128,6 +128,28 @@
         </div>
 
         <div class="acciones-ganadores">
+          <button id="btn-ruleta" class="btn-pro" style="background: #2563eb">
+            <i class="bx bx-refresh bx-spin"></i> Ruleta de Equipos
+          </button>
+          <button id="btncuadro" class="btn-pro">Ver Formato</button>
+          <a href="index.html" class="btn-secundario"> Nuevo Sorteo </a>
+        </div>
+
+        <div id="modal-ruleta" class="modal-sorteo" style="display: none">
+          <div class="contenido-ruleta">
+            <span class="cerrar-modal">&times;</span>
+            <h2 id="turno-jugador" style="color: #3b82f6">Turno de: ---</h2>
+            <div class="ruleta-box">
+              <div class="marcador-flecha"></div>
+              <canvas id="canvas-ruleta" width="350" height="350"></canvas>
+            </div>
+            <button id="girar-ruleta" class="empezar" style="width: 100%">
+              ¡GIRAR!
+            </button>
+            <h3 id="equipo-ganador" style="margin-top: 15px; color: gold">
+              ¿Qué equipo te tocará?
+            </h3>
+          </div>
           <button id="btncuadro" class="btn-pro">Ver Formato</button>
           <a href="index.html" class="btn-secundario"> Nuevo Sorteo </a>
         </div>

@@ -79,3 +79,4 @@ function pegarJugador(elemento) {
     jugadorSeleccionado = null;
     casillaPrevia = null;
 }
+
