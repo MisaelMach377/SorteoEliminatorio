@@ -1,7 +1,8 @@
-const textareaParticipantes = document.getElementById("participantes")
+// --- SELECTORES EXISTENTES ---
+const textareaParticipantes = document.getElementById("participantes");
 const alertaError = document.querySelector(".alerta");
 const formSorteo = document.querySelector(".contenedor-sorteo");
-const contenedorParticipantes = document.querySelector(".participantes-container")
+const contenedorParticipantes = document.querySelector(".participantes-container");
 const listaDeParticipantes = document.querySelector(".lista-participantes");
 const totalParticipantes = document.getElementById("numero-participantes");
 const botonMezclar = document.getElementById("chocolateo");
@@ -12,11 +13,10 @@ const contenedorGanadores = document.querySelector(".ganadores-container");
 const listaGanadores = document.querySelector(".ganadores-li");
 const botonLimpiar = document.getElementById("limpiar");
 const botonAyuda = document.getElementById("ayuda");
-const contenedorAyuda = document.querySelector(".box-ayuda")
+const contenedorAyuda = document.querySelector(".box-ayuda");
 const botonCuadro = document.getElementById("btncuadro");
-const btnChocolateo = document.getElementById('chocolateo');
 
-// Variables de la Ruleta
+// --- VARIABLES DE LA RULETA Y MODAL ---
 const btnRuleta = document.getElementById('btn-ruleta');
 const modal = document.getElementById('modal-ruleta');
 const cerrar = document.querySelector('.cerrar-modal');
@@ -24,12 +24,10 @@ const btnGirar = document.getElementById('girar-ruleta');
 const canvas = document.getElementById('canvas-ruleta');
 const ctx = canvas.getContext('2d');
 
-// 1. DEFINIR COLORES (Faltaba esta variable)
-// 1. DEFINIR COLORES (Faltaba esta variable)
 const colors = ["#1f6feb", "#0d419d", "#238636", "#0969da", "#161b22"];
 
 const equiposFifa = [
-    {  logo: "img/clubes-logo/Real_Madrid_CF.svg" },
+    { nombre: "Real Madrid", logo: "img/clubes-logo/Real_Madrid_CF.svg" },
     { nombre: "Barcelona", logo: "img/clubes-logo/FC_Barcelona_(crest).svg" },
     { nombre: "Atletico de Madrid", logo: "img/clubes-logo/Logo_Atlético_Madrid_2017.svg" },
     { nombre: "PSG", logo: "img/clubes-logo/Paris_Saint-Germain_F.C..svg" },
@@ -44,11 +42,11 @@ const equiposFifa = [
     { nombre: "Juventus", logo: "img/clubes-logo/Juventus_FC_-_logo_black_(Italy,_2017).svg" },
     { nombre: "Napoles", logo: "img/clubes-logo/SSC_Neapel.svg" },
     { nombre: "Monaco", logo: "img/clubes-logo/france_as-monaco.football-logos.cc.svg" },
-        { nombre: "Bayern Munchen", logo: "img/clubes-logo/Logo_FC_Bayern_München_(2002–2017).svg" },
+    { nombre: "Bayern Munchen", logo: "img/clubes-logo/Logo_FC_Bayern_München_(2002–2017).svg" },
     { nombre: "Borussia", logo: "img/clubes-logo/Borussia_Dortmund_logo.svg" },
     { nombre: "Bayer Leverkusen", logo: "img/clubes-logo/Bayer_04_Leverkusen_logo.svg" },
     { nombre: "Arsenal", logo: "img/clubes-logo/Arsenal_FC.svg" },
-        { nombre: "Man. United", logo: "img/clubes-logo/Manchester_United_FC_crest.svg" },
+    { nombre: "Man. United", logo: "img/clubes-logo/Manchester_United_FC_crest.svg" },
     { nombre: "Man.City", logo: "img/clubes-logo/Manchester_City_FC_badge.svg" },
     { nombre: "Liverpool", logo: "img/clubes-logo/england_liverpool.football-logos.cc.svg" },
     { nombre: "Chelsea", logo: "img/clubes-logo/Chelsea_FC.svg" },
@@ -56,12 +54,9 @@ const equiposFifa = [
     { nombre: "Aston Villa", logo: "img/clubes-logo/Aston_Villa_FC_logo.svg" },
     { nombre: "Newcastle", logo: "img/clubes-logo/Newcastle_United_Logo.svg" },
     { nombre: "Leipzig", logo: "img/clubes-logo/VEREINFACHTES_LOGO_-_RB_Leipzig.svg" },
-
-
-
 ];
 
-// Pre-carga de imágenes
+// --- PRE-CARGA DE IMÁGENES ---
 const imagenesCargadas = {};
 let imagenesListas = 0;
 
@@ -70,25 +65,22 @@ equiposFifa.forEach(equipo => {
     img.src = equipo.logo;
     img.onload = () => {
         imagenesListas++;
-        if (imagenesListas === equiposFifa.length) {
-            console.log("Logos cargados");
-        }
+        if (imagenesListas === equiposFifa.length) console.log("Logos cargados");
     };
     imagenesCargadas[equipo.nombre] = img;
 });
 
-// Variables de Turno
+// --- LÓGICA DE LA RULETA (MODAL Y GIRO) ---
 let indiceTurno = 0;
+let rotacionAcumulada = 0;
 
-// Abrir y cerrar modal
 btnRuleta.onclick = () => { 
     modal.style.display = "flex"; 
-    // Recuperamos participantes para los turnos
     const gans = JSON.parse(localStorage.getItem("ganadores")) || [];
-    if(gans.length > 0) {
-        document.getElementById('turno-jugador').innerText = "Turno de: " + gans[0];
+    if(indiceTurno < gans.length) {
+        document.getElementById('turno-jugador').innerText = "Turno de: " + gans[indiceTurno];
     }
-    dibujar(); 
+    setTimeout(dibujar, 100); 
 };
 
 cerrar.onclick = () => { modal.style.display = "none"; };
@@ -96,6 +88,8 @@ cerrar.onclick = () => { modal.style.display = "none"; };
 function dibujar() {
     if (!canvas) return;
     const centro = canvas.width / 2;
+    // radioSorteo nos da un margen de seguridad para que los logos no toquen el borde
+    const radioSorteo = centro - 15; 
     const arco = (2 * Math.PI) / equiposFifa.length;
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -103,175 +97,217 @@ function dibujar() {
     equiposFifa.forEach((equipo, i) => {
         const angulo = i * arco;
 
-        // Dibujar el segmento
+        // 1. Dibujar el segmento (Fondo de color)
         ctx.beginPath();
         ctx.fillStyle = colors[i % colors.length];
         ctx.moveTo(centro, centro);
-        ctx.arc(centro, centro, centro, angulo, angulo + arco);
+        // Usamos radioSorteo para dejar el margen
+        ctx.arc(centro, centro, radioSorteo, angulo, angulo + arco); 
         ctx.fill();
-        ctx.strokeStyle = "rgba(255,255,255,0.1)";
+        
+        // Línea divisoria muy sutil
+        ctx.strokeStyle = "rgba(255,255,255,0.03)";
+        ctx.lineWidth = 1;
         ctx.stroke();
 
-        // Dibujar Texto y Logo
+        // 2. Dibujar el ESCUDO (Más pequeño y centrado en el arco)
         ctx.save();
         ctx.translate(centro, centro);
         ctx.rotate(angulo + arco / 2);
 
-        // Nombre
-        ctx.textAlign = "right";
-        ctx.fillStyle = "white";
-        ctx.font = "bold 12px Montserrat";
-        ctx.fillText(equipo.nombre, centro - 65, 5);
-
-        // Logo
         const imgLogo = imagenesCargadas[equipo.nombre];
         if (imgLogo && imgLogo.complete) {
-            ctx.drawImage(imgLogo, centro - 55, -15, 30, 30); 
+            // FIX: Tamaño mucho más pequeño para 27 equipos
+            // Pasamos de 35px a 22px para que no se amontonen
+            const tamañoLogo = 22; 
+            
+            // FIX: Posición centrada en la rebanada
+            // radioSorteo * 0.75 aleja el logo del centro pero lo mantiene dentro
+            // -tamañoLogo / 2 centra el logo verticalmente respecto a la línea de rotación
+            ctx.drawImage(imgLogo, radioSorteo * 0.75, -tamañoLogo / 2, tamañoLogo, tamañoLogo); 
         }
 
         ctx.restore();
     });
 
-    // Centro decorativo
+    // 3. Centro decorativo (Minimalista)
     ctx.beginPath();
     ctx.arc(centro, centro, 30, 0, 2 * Math.PI);
     ctx.fillStyle = "#161b22";
     ctx.fill();
+    ctx.strokeStyle = "#30363d";
+    ctx.lineWidth = 3;
+    ctx.stroke();
 }
 
 btnGirar.onclick = () => {
     const gans = JSON.parse(localStorage.getItem("ganadores")) || [];
-    
-    // 1. Validar que queden jugadores y equipos
-    if (indiceTurno >= gans.length) {
-        document.getElementById('equipo-ganador').innerText = "¡Sorteo finalizado!";
-        return;
-    }
-    if (equiposFifa.length === 0) {
-        alert("¡Se acabaron los equipos disponibles!");
-        return;
-    }
+    if (indiceTurno >= gans.length || equiposFifa.length === 0) return;
 
-    const rotation = Math.floor(Math.random() * 360) + 3600; 
-    canvas.style.transition = "transform 4s cubic-bezier(0.1, 0, 0.2, 1)";
-    canvas.style.transform = `rotate(${rotation}deg)`;
-    
     btnGirar.disabled = true;
+    const giroExtra = Math.floor(Math.random() * 360) + 3600; 
+    rotacionAcumulada += giroExtra; 
+
+    canvas.style.transition = "transform 4s cubic-bezier(0.1, 0, 0.2, 1)";
+    canvas.style.transform = `rotate(${rotacionAcumulada}deg)`;
 
     setTimeout(() => {
-        const realDeg = rotation % 360;
-        // Calculamos cuál cayó
-        const itemIndex = Math.floor((360 - realDeg) / (360 / equiposFifa.length)) % equiposFifa.length;
+        const gradosReales = rotacionAcumulada % 360;
+        const tamañoRebanada = 360 / equiposFifa.length;
+        // Ajuste Flecha Arriba (270°)
+        let anguloFlecha = (360 - gradosReales + 270) % 360;
+        const itemIndex = Math.floor(anguloFlecha / tamañoRebanada) % equiposFifa.length;
         const equipoGanado = equiposFifa[itemIndex];
 
-        // 2. Mostrar resultado
-        document.getElementById('equipo-ganador').innerText = `${gans[indiceTurno]} se lleva al ${equipoGanado.nombre}!`;
+        // 1. Resultado Modal
+      document.getElementById('equipo-ganador').innerHTML = `
+    <div style="display:flex; flex-direction:column; align-items:center; gap:12px;">
+        <span style="font-size:0.9rem; color: #8b949e;">A ${gans[indiceTurno]} le tocó:</span>
+        <img src="${equipoGanado.logo}" style="width:70px; height:70px; filter: drop-shadow(0 0 15px rgba(255,255,255,0.3)); object-fit: contain;">
+    </div>
+`;
 
-        // 3. EL TRUCO: Quitamos el equipo del array para que no vuelva a salir
+     // --- COPIAR Y REEMPLAZAR ESTE BLOQUE EXACTO ---
+
+// 2. Actualización Lista de Cruces (ESTRUCTURA TOTALMENTE LIMPIA)
+const listaItems = document.querySelectorAll(".ganadores-li li p");
+
+if (listaItems[indiceTurno]) {
+    const nombreParticipante = gans[indiceTurno];
+    const nroTurno = indiceTurno + 1;
+
+    // Generamos un HTML plano, sin contenedores extra, solo texto y el logo
+    listaItems[indiceTurno].innerHTML = `
+        <div style="display: flex; align-items: center; width: 100%; padding-left: 10px; background: none !important;">
+            
+            <span style="
+                color: #ffffff; 
+                font-family: monospace; 
+                font-size: 0.9rem; 
+                margin-right: 15px; 
+                min-width: 25px; 
+                text-align: right;
+            ">${nroTurno}</span>
+
+            <span style="
+                color: #ffffff; 
+                font-weight: 500; 
+                font-size: 1rem; 
+                margin-left: 20px;
+                background: none !important;
+                border: none !important;
+                border-radius: 0 !important;
+            ">
+                ${nombreParticipante}
+            </span>
+
+            <span style="
+                color: #ffffff; 
+                margin: 0 15px; 
+                font-weight: bold; 
+                font-size: 1.1rem;
+                background: none !important;
+                border: none !important;
+                border-radius: 0 !important;
+            ">➔</span>
+
+            <img src="${equipoGanado.logo}" style="
+                width:30px; 
+                height:30px; 
+                object-fit:contain; 
+                vertical-align:middle;
+                filter: drop-shadow(0 0 5px rgba(255,255,255,0.1));
+            ">
+        </div>
+    `;
+    
+    // Limpiamos el contenedor padre (el <p>) de cualquier círculo previo
+    const pContainer = listaItems[indiceTurno];
+    pContainer.style.background = "none";
+    pContainer.style.border = "none";
+    pContainer.style.borderRadius = "0";
+
+    // Estilo de la FILA COMPLETA (el <li>, no el círculo del nombre)
+    const parentLi = listaItems[indiceTurno].parentElement;
+    parentLi.style.background = "rgba(255, 255, 255, 0.05)"; 
+    parentLi.style.borderColor = "rgba(255, 255, 255, 0.1)";
+    parentLi.style.borderRadius = "8px"; // Bordes suaves de la fila
+    parentLi.style.padding = "0"; // Reiniciamos padding para usar el del div flex
+}
+        // ELIMINAR EL EQUIPO PARA QUE NO REPITA
         equiposFifa.splice(itemIndex, 1);
-
-        // 4. Preparar siguiente turno
+        
+        // PASAR AL SIGUIENTE TURNO
         indiceTurno++;
         btnGirar.disabled = false;
 
-        if (indiceTurno < gans.length) {
+        // VERIFICAR SI CONTINUAMOS
+        if (indiceTurno < gans.length && equiposFifa.length > 0) {
             document.getElementById('turno-jugador').innerText = "Turno de: " + gans[indiceTurno];
-            
-            // 5. Redibujar la ruleta con los equipos que QUEDAN
-            // Ponemos un pequeño delay para que se vea el cambio después de la emoción
-            setTimeout(() => {
-                canvas.style.transition = "none"; // Quitamos la transición para resetear posición
-                canvas.style.transform = `rotate(0deg)`;
-                dibujar(); // Volvemos a dibujar la ruleta con 1 equipo menos
-            }, 2000);
-            
+            // Redibujamos la ruleta con un equipo menos
+            setTimeout(dibujar, 500); 
         } else {
-            document.getElementById('turno-jugador').innerText = "¡Todos tienen equipo!";
-            btnGirar.style.display = "none"; // Escondemos el botón al terminar
+            document.getElementById('turno-jugador').innerText = "¡Sorteo finalizado!";
+            btnGirar.style.display = "none";
+            // Dibujamos una última vez para que la ruleta no quede vacía o mal cortada
+            dibujar(); 
         }
-    }, 4000);
+    }, 4000); // Tiempo que dura el giro
 };
-let participantesLi;
 
-botonCuadro.addEventListener("click", () => mostrarCuadroEliminatoria());
-botonAyuda.addEventListener("click", () => mostrarAyuda());
-botonLimpiar.addEventListener("click", () => limpiarListaParticipantes());
-botonIniciarSorteo.addEventListener("click", () => iniciarContador());
-botonMezclar.addEventListener("click", () => chocolatearParticipantes());
+// --- LÓGICA DE PARTICIPANTES Y SORTEO INICIAL ---
+let participantesLi = [];
 
-
-
+botonCuadro.addEventListener("click", () => window.location.href="eliminatoria.html");
+botonAyuda.addEventListener("click", () => {
+    formSorteo.style.display = "none";
+    contenedorAyuda.style.display = "block";
+});
+botonLimpiar.addEventListener("click", () => {
+    textareaParticipantes.value = "";
+    participantesLi = [];
+});
+botonIniciarSorteo.addEventListener("click", iniciarContador);
+botonMezclar.addEventListener("click", chocolatearParticipantes);
 
 document.addEventListener("submit", e => {
     e.preventDefault();
     validarParticipantes();
-})
+});
 
 function validarParticipantes() {
-    const participantesValidos = textareaParticipantes.value.split("\n").
-        map(linea => linea.trim())
+    const participantesValidos = textareaParticipantes.value.split("\n")
+        .map(linea => linea.trim())
         .filter(linea => linea != "");
 
-
     if (participantesValidos.length < 8) {
-        mostrarAlertaError("Agrega minimo 8 participantes");
+        mostrarAlertaError("Agrega mínimo 8 participantes");
         return;
     }
-
-    textareaParticipantes.style.border = "solid thin #d2d6dc";
     iniciarSorteo(participantesValidos);
-
 }
 
 function iniciarSorteo(participantesValidos) {
     formSorteo.style.display = "none";
     contenedorParticipantes.style.display = "block";
-    participantesLi = [...participantesValidos]
-
+    participantesLi = [...participantesValidos];
     actualizarListaParticipantes(participantesLi);
     totalParticipantes.textContent = participantesLi.length;
-
-
 }
-
 
 function actualizarListaParticipantes(participantes) {
     listaDeParticipantes.innerHTML = "";
     participantes.forEach((participante, indice) => {
         const itemParticipante = document.createElement("li");
-        
-        // Creamos el círculo con el número
+        const etiquetaNombre = document.createElement("p");
         const etiquetaNumero = document.createElement("span");
         etiquetaNumero.textContent = indice + 1;
-        
-        // Creamos el contenedor del nombre
-        const etiquetaNombre = document.createElement("p");
         etiquetaNombre.textContent = participante;
-
-        // Metemos el número dentro del p y el p dentro del li
         etiquetaNombre.prepend(etiquetaNumero);
         itemParticipante.appendChild(etiquetaNombre);
-        
         listaDeParticipantes.appendChild(itemParticipante);
     });
 }
-
-// 2. Escuchamos el clic
-btnChocolateo.addEventListener('click', () => {
-    // Aquí usamos el array donde guardas tus participantes (ejemplo: listaNombres)
-    if (listaNombres.length > 0) {
-        // Mezclamos el array (Algoritmo Fisher-Yates)
-        listaNombres.sort(() => Math.random() - 0.5);
-        
-        // Llamamos a la función que renderiza la lista en el HTML
-        renderizarParticipantes(); 
-        
-        // Opcional: Una pequeña animación de rotación al ícono
-        btnChocolateo.style.transform = 'rotate(360deg)';
-        btnChocolateo.style.transition = 'transform 0.5s';
-        setTimeout(() => btnChocolateo.style.transform = 'rotate(0deg)', 500);
-    }
-});
 
 function chocolatearParticipantes() {
     for (let i = participantesLi.length - 1; i > 0; i--) {
@@ -279,16 +315,19 @@ function chocolatearParticipantes() {
         [participantesLi[i], participantesLi[j]] = [participantesLi[j], participantesLi[i]];
     }
     actualizarListaParticipantes(participantesLi);
+    botonMezclar.style.transform = 'rotate(360deg)';
+    botonMezclar.style.transition = 'transform 0.5s';
+    setTimeout(() => botonMezclar.style.transform = 'rotate(0deg)', 500);
 }
 
 function iniciarContador() {
-    let numeroContador = parseInt(counter.textContent);
+    let numeroContador = parseInt(contador.textContent);
     contenedorParticipantes.style.display = "none";
     contenedorContador.style.display = "block";
 
     const interValidId = setInterval(() => {
         numeroContador--;
-        counter.textContent = numeroContador
+        contador.textContent = numeroContador;
         if (numeroContador < 1) {
             clearInterval(interValidId);
             mostrarGanadores();
@@ -296,137 +335,55 @@ function iniciarContador() {
     }, 1000);
 }
 
-
 function mostrarGanadores() {
     contenedorContador.style.display = "none";
     contenedorGanadores.style.display = "block";
-
     let ganadores = [];
+    let copiaParticipantes = [...participantesLi];
 
-    while (participantesLi.length > 0) {
-        let indiceAleatorio = Math.floor(Math.random() * participantesLi.length)
-        let ganador = participantesLi[indiceAleatorio];
-
-        ganadores.push(ganador);
-        participantesLi.splice(indiceAleatorio, 1)
-
+    while (copiaParticipantes.length > 0) {
+        let indiceAleatorio = Math.floor(Math.random() * copiaParticipantes.length);
+        ganadores.push(copiaParticipantes[indiceAleatorio]);
+        copiaParticipantes.splice(indiceAleatorio, 1);
     }
-localStorage.setItem("ganadores",JSON.stringify(ganadores));
+    localStorage.setItem("ganadores", JSON.stringify(ganadores));
 
-
-   ganadores.forEach((ganador, indice) => {
-    const itemGanador = document.createElement("li");
-    const etiquetaNombre = document.createElement("p");
-    const etiquetaNumero = document.createElement("span");
-
-    etiquetaNumero.textContent = indice + 1;
-    etiquetaNombre.textContent = ganador;
-    
-    // IMPORTANTE: Primero el número, luego el nombre
-    etiquetaNombre.prepend(etiquetaNumero);
-    itemGanador.appendChild(etiquetaNombre);
-    listaGanadores.appendChild(itemGanador);
-});
-
-
-
+    ganadores.forEach((ganador, indice) => {
+        const itemGanador = document.createElement("li");
+        const etiquetaNombre = document.createElement("p");
+        const etiquetaNumero = document.createElement("span");
+        etiquetaNumero.textContent = indice + 1;
+        etiquetaNombre.textContent = ganador;
+        etiquetaNombre.prepend(etiquetaNumero);
+        itemGanador.appendChild(etiquetaNombre);
+        listaGanadores.appendChild(itemGanador);
+    });
 }
 
-
-
-
 function mostrarAlertaError(mensaje) {
-
     alertaError.classList.add("active");
     alertaError.textContent = mensaje;
     textareaParticipantes.style.border = "solid 2px #dc2545";
-
-    setTimeout(() => {
-        alertaError.classList.remove("active");
-    }, 3000);
-
-
+    setTimeout(() => alertaError.classList.remove("active"), 3000);
 }
 
-function limpiarListaParticipantes() {
-
-    textareaParticipantes.value = "";
-    participantesLi = [];
-}
-
-
-function mostrarAyuda() {
-
-    formSorteo.style.display = "none";
-    contenedorAyuda.style.display = "block";
-
-}
-
-
-function mostrarCuadroEliminatoria(){
-
-    window.location.href="eliminatoria.html";
-}
-
-
+// --- GUARDAR DATOS EN CUADRO ELIMINATORIA ---
 window.onload = function GuardarDatos() {
-    // Recuperamos los ganadores almacenados en localStorage (suponiendo que los ganadores son un array)
     let ganadores = JSON.parse(localStorage.getItem('ganadores'));
+    if (ganadores && ganadores.length > 0) {
+        let divs = [
+            '.casilla-uno', '.casilla-dos', '.casilla-tres', '.casilla-cuatro',
+            '.casilla-cinco', '.casilla-seis', '.casilla-siete', '.casilla-ocho',
+            '.casilla-nueve', '.casilla-diez', '.casilla-once', '.casilla-doce',
+            '.casilla-trece', '.casilla-catorce', '.casilla-quince', '.casilla-diesiseis'
+        ].map(selector => document.querySelector(selector));
 
- // Comprobamos si hay ganadores
- if (ganadores && ganadores.length > 0) {
-    // Asumimos que los ganadores son los elementos que deben ir en los divs
-
- // Accedemos a los divs donde queremos colocar los resultados (ajusta los selectores según tus necesidades)
- let divs = [
-    document.querySelector('.casilla-uno'),
-    document.querySelector('.casilla-dos'),
-    document.querySelector('.casilla-tres'),
-    document.querySelector('.casilla-cuatro'),
-    document.querySelector('.casilla-cinco'),
-    document.querySelector('.casilla-seis'),
-    document.querySelector('.casilla-siete'),
-    document.querySelector('.casilla-ocho'),
-    document.querySelector('.casilla-nueve'),
-    document.querySelector('.casilla-diez'),
-    document.querySelector('.casilla-once'),
-    document.querySelector('.casilla-doce'),
-    document.querySelector('.casilla-trece'),
-    document.querySelector('.casilla-catorce'),
-    document.querySelector('.casilla-quince'),
-    document.querySelector('.casilla-diesiseis')
-
-    // Agrega más divs si los necesitas
-];
-
-// Insertamos los ganadores uno por uno en los divs
-ganadores.forEach((ganador, index) => {
-    if (divs[index]) {
-        let p = document.createElement('p');
-        p.textContent = ganador;  // Asignamos el nombre del ganador al elemento <p>
-        divs[index].appendChild(p);  // Agregamos el <h1> dentro del div correspondiente
+        ganadores.forEach((ganador, index) => {
+            if (divs[index]) {
+                let p = document.createElement('p');
+                p.textContent = ganador;
+                divs[index].appendChild(p);
+            }
+        });
     }
-});
-} else {
-console.log("No hay ganadores para mostrar.");
-}
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+};

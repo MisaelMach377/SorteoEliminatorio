@@ -120,8 +120,11 @@
         </svg>
       </div>
 
-      <div class="ganadores-container" id="ganadoresBox" style="display: none">
-        <h3>Cruces del Torneo</h3>
+     <div class="ganadores-container" id="ganadoresBox" style="display: none">
+        <div class="header-ganadores">
+          <h3>Cruces del Torneo</h3>
+          <i class="bx bxs-home-circle btn-home" onclick="location.reload()"></i>
+        </div>
 
         <div class="scroll-ganadores">
           <ul class="ganadores-li" id="resultado-ganadores"></ul>
@@ -132,27 +135,30 @@
             <i class="bx bx-refresh bx-spin"></i> Ruleta de Equipos
           </button>
           <button id="btncuadro" class="btn-pro">Ver Formato</button>
-          <a href="index.html" class="btn-secundario"> Nuevo Sorteo </a>
         </div>
 
-        <div id="modal-ruleta" class="modal-sorteo" style="display: none">
-          <div class="contenido-ruleta">
-            <span class="cerrar-modal">&times;</span>
-            <h2 id="turno-jugador" style="color: #3b82f6">Turno de: ---</h2>
-            <div class="ruleta-box">
-              <div class="marcador-flecha"></div>
-              <canvas id="canvas-ruleta" width="350" height="350"></canvas>
-            </div>
-            <button id="girar-ruleta" class="empezar" style="width: 100%">
-              ¡GIRAR!
-            </button>
-            <h3 id="equipo-ganador" style="margin-top: 15px; color: gold">
-              ¿Qué equipo te tocará?
-            </h3>
-          </div>
-          <button id="btncuadro" class="btn-pro">Ver Formato</button>
-          <a href="index.html" class="btn-secundario"> Nuevo Sorteo </a>
         </div>
+
+       <div id="modal-ruleta" class="modal-sorteo" style="display: none">
+    <div class="contenido-ruleta">
+        <span class="cerrar-modal">&times;</span>
+        <h2 id="turno-jugador">Turno de: <span id="nombre-actual">---</span></h2>
+        
+        <div class="ruleta-box">
+            <div class="marcador-flecha"></div>
+            <canvas id="canvas-ruleta" width="400" height="400"></canvas>
+        </div>
+
+        <div class="footer-ruleta">
+            <button id="girar-ruleta" class="btn-girar-pro">
+                <i class='bx bx-sync'></i> ¡GIRAR AHORA!
+            </button>
+            <div id="contenedor-resultado">
+                <h3 id="equipo-ganador">¿Qué equipo te tocará?</h3>
+            </div>
+        </div>
+    </div>
+    </div>
       </div>
 
       <div class="alerta"></div>
